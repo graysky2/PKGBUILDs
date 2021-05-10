@@ -1,0 +1,32 @@
+# Maintainer: graysky <graysky AT archlinux DOT us>
+
+pkgname=linux-raspberrypi-api-headers
+_commit=7d9d9693c2935bdb6af0089c16d39d91334ea182
+_srcname=linux-${_commit}
+_kernelname=${pkgbase#linux}
+pkgver=5.10.35
+pkgrel=1
+pkgdesc='Kernel headers based on rpi-5.10.y fork sanitized for use in userspace'
+arch=(any)
+url='https://www.gnu.org/software/libc'
+license=(GPL2)
+makedepends=(rsync)
+provides=("linux-api-headers=$pkgver")
+conflicts=(linux-api-headers)
+source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz")
+sha256sums=('70e6ead9fb85367481f9965f95b8b18800b43fc162a02d061c886f595534f7bf')
+
+build() {
+  cd "${srcdir}/${_srcname}"
+
+  make mrproper
+  make headers_check
+}
+
+package() {
+  cd "${srcdir}/${_srcname}"
+  make INSTALL_HDR_PATH="$pkgdir/usr" headers_install
+
+  # use headers from libdrm
+  rm -r "$pkgdir/usr/include/drm"
+}

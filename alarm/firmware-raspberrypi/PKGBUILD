@@ -5,8 +5,8 @@ buildarch=28
 
 pkgname=firmware-raspberrypi
 _firmcommit=f713a6054746bc61ece1c8696dce91a7b7e22dd9
-_bluezcommit=8445a53ce2c51a77472b908a0c8f6f8e1fa5c37a
-pkgver=20210223
+_bluezcommit=e7fd166981ab4bb9a36c2d1500205a078a35714d
+pkgver=20210531
 pkgrel=1
 pkgdesc="Additional firmware for Raspberry Pi"
 arch=('any')
@@ -17,6 +17,13 @@ source=(
         # bluetooth for RPi3+
         "BCM43430A1.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM43430A1.hcd"
         "BCM4345C0.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM4345C0.hcd"
+        # bluetooth misc
+        "BCM43430B0.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM43430B0.hcd"
+        "BCM4345C5.hcd::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM4345C5.hcd"
+
+        "BCM2033-FW.bin-::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM2033-FW.bin"
+        "BCM2033-MD.hex::https://github.com/RPi-Distro/bluez-firmware/raw/$_bluezcommit/broadcom/BCM2033-MD.hex"
+
         # fixes buggy linux-firmware for RPi4B
         'brcmfmac43455-sdio.raspberrypi,4-model-b.txt'
         # fixes buggy linux-firmware for Zero-W
@@ -29,6 +36,10 @@ source=(
 
 sha256sums=('c096ad4a5c3f06ed7d69eba246bf89ada9acba64a5b6f51b1e9c12f99bb1e1a7'
             'c723c903655086c9f3a1de94a291f495a0f087f1ee6d3ee7bc4c558497aae7bc'
+            '338c2c6631131f516bfc7e64ef0872bd0402e1f98ef9d0c900eef0c814d90a25'
+            'dde785c4fa1351b52bda9c74554ae55bc74ecbe44935b9c3d83c7fe282cf17cf'
+            'a330e00d04685ba29f734c3c83aa1e56a5549afeee3ef6c86d06f9d9e9767b5c'
+            'f911d34b1d23214642d5be861648d1f9d8b0c10222f698248768bb28bb7ea941'
             'edb6f4e4fb19e18940004124feb4ffe160d72fc607243a07a4480338a28b2748'
             'e4ce7ad5ce72406f958ed758539b65d958d1c0eb3e46e3f8e9f02b510d88e0b0'
             'ddf83f2100885b166be52d21c8966db164fdd4e1d816aca2acc67ee9cc28d726'
@@ -40,4 +51,7 @@ package() {
   install -d "$pkgdir/usr/lib/firmware/updates/brcm" "$pkgdir/usr/share/alsa/cards/"
   install -m 0644 -- *.bin *.txt *.clm_blob *.hcd "${pkgdir}/usr/lib/firmware/updates/brcm"
   install -m 0644 RPi-WM8804.conf "$pkgdir/usr/share/alsa/cards/"
+
+  install -m 0644 BCM2033-FW.bin- "${pkgdir}/usr/lib/firmware/BCM2033-FW.bin"
+  install -m 0644 BCM2033-MD.hex "${pkgdir}/usr/lib/firmware/BCM2033-MD.hex"
 }

@@ -1,0 +1,26 @@
+From ac1bafe0c24ce7566c16ff288e921441044216dd Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky@proton.me>
+Date: Sun, 21 Aug 2022 13:01:05 -0400
+Subject: [PATCH 11/11] Revert "makechrootpkg-no-default-logging"
+
+This reverts commit d5b3d143f8d846259962235925349f132aa2a2fe.
+---
+ makechrootpkg.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makechrootpkg.in b/makechrootpkg.in
+index c16b7c2..43e0aa6 100644
+--- a/makechrootpkg.in
++++ b/makechrootpkg.in
+@@ -9,7 +9,7 @@ source /usr/share/makepkg/util/config.sh
+ 
+ shopt -s nullglob
+ 
+-default_makepkg_args=(--syncdeps --noconfirm --holdver --skipinteg)
++default_makepkg_args=(--syncdeps --noconfirm --log --holdver --skipinteg)
+ makepkg_args=("${default_makepkg_args[@]}")
+ verifysource_args=()
+ chrootdir=
+-- 
+2.37.2
+

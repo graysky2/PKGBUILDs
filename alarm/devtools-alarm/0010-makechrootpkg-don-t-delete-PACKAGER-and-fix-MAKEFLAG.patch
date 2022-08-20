@@ -1,7 +1,7 @@
-From 2011872cbc0c74b96f4d43da10044857e6565074 Mon Sep 17 00:00:00 2001
-From: graysky <graysky@archlinux.us>
-Date: Fri, 30 Jul 2021 09:02:48 -0400
-Subject: [PATCH 9/9] makechrootpkg: don't delete PACKAGER
+From f3a61c3692c77f7c69cd5653d32a1960392226d0 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky@proton.me>
+Date: Sat, 20 Aug 2022 16:40:01 -0400
+Subject: [PATCH 10/10] makechrootpkg: don't delete PACKAGER and fix MAKEFLAGS
 
 Keep MAKEFLAGS so it can prefix a call to makechrootpkg.
 MAKEFLAGS= must not be defined in $BUILDROOT/etc/makepkg.conf for this to work.
@@ -11,10 +11,10 @@ See: https://bugs.archlinux.org/task/64938
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/makechrootpkg.in b/makechrootpkg.in
-index 7470670..3fa8759 100644
+index 4c1da15..c16b7c2 100644
 --- a/makechrootpkg.in
 +++ b/makechrootpkg.in
-@@ -172,9 +172,8 @@ prepare_chroot() {
+@@ -164,9 +164,8 @@ prepare_chroot() {
  
  	$install -d "$copydir"/{build,startdir,{pkg,srcpkg,src,log}dest}
  
@@ -26,5 +26,5 @@ index 7470670..3fa8759 100644
  		grep -q "^$x" "$copydir/etc/makepkg.conf" && continue
  		echo "$x" >>"$copydir/etc/makepkg.conf"
 -- 
-2.32.0
+2.37.2
 

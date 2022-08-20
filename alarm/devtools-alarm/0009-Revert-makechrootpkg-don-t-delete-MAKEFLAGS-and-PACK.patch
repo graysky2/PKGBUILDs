@@ -1,19 +1,19 @@
-From f98a0e02db335378dc24b91d59deeb4f27c97166 Mon Sep 17 00:00:00 2001
-From: graysky <graysky@archlinux.us>
-Date: Fri, 30 Jul 2021 09:00:46 -0400
-Subject: [PATCH 8/9] Revert "makechrootpkg: don't delete MAKEFLAGS and
- PACKAGER"
+From 3abb3dbda9ff3de142bf1387ecc19e421eee4d88 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky@proton.me>
+Date: Sat, 20 Aug 2022 16:39:17 -0400
+Subject: [PATCH 09/10] Revert
+ "makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER"
 
-This reverts commit 07ceddf8a8bb22f64d038ff6d69b02b8ca1618a9.
+This reverts commit df0a85fd4cb0e116d4bf5e133fc2ffde478d6ad5.
 ---
  makechrootpkg.in | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/makechrootpkg.in b/makechrootpkg.in
-index 664bac1..7470670 100644
+index 179e8c6..4c1da15 100644
 --- a/makechrootpkg.in
 +++ b/makechrootpkg.in
-@@ -172,7 +172,9 @@ prepare_chroot() {
+@@ -164,7 +164,9 @@ prepare_chroot() {
  
  	$install -d "$copydir"/{build,startdir,{pkg,srcpkg,src,log}dest}
  
@@ -25,5 +25,5 @@ index 664bac1..7470670 100644
  		grep -q "^$x" "$copydir/etc/makepkg.conf" && continue
  		echo "$x" >>"$copydir/etc/makepkg.conf"
 -- 
-2.32.0
+2.37.2
 

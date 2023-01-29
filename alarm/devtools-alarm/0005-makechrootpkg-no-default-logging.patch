@@ -1,16 +1,16 @@
-From fe9761f7d56bc921a4a9d983d73e63f820df5184 Mon Sep 17 00:00:00 2001
-From: Kevin Mihelich <kevin@archlinuxarm.org>
-Date: Sun, 28 Dec 2014 22:33:41 -0700
-Subject: [PATCH 5/8] makechrootpkg: no default logging
+From 86089fef22a2aa0a30a1bf3d74a820d83105e8b7 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky@proton.me>
+Date: Sat, 20 Aug 2022 16:38:23 -0400
+Subject: [PATCH 05/12] makechrootpkg-no-default-logging
 
 ---
- makechrootpkg.in | 2 +-
+ src/makechrootpkg.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/makechrootpkg.in b/makechrootpkg.in
-index 367f030..f1a8437 100644
---- a/makechrootpkg.in
-+++ b/makechrootpkg.in
+diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
+index 4c60ef0..7594146 100644
+--- a/src/makechrootpkg.in
++++ b/src/makechrootpkg.in
 @@ -9,7 +9,7 @@ source /usr/share/makepkg/util/config.sh
  
  shopt -s nullglob
@@ -21,5 +21,5 @@ index 367f030..f1a8437 100644
  verifysource_args=()
  chrootdir=
 -- 
-2.36.1
+2.39.1
 

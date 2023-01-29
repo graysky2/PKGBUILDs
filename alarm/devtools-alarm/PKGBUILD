@@ -6,7 +6,7 @@
 
 pkgname=devtools-alarm
 _pkgname=devtools
-pkgver=20220621
+pkgver=20230105
 pkgrel=1
 pkgdesc='Tools for Arch Linux ARM package maintainers graysky mods'
 arch=('any')
@@ -18,20 +18,21 @@ depends=('bash' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
          'git' 'bzr' 'mercurial' 'diffutils' 'util-linux' 'awk')
 makedepends=('asciidoc')
 optdepends=('btrfs-progs: btrfs support')
-source=(${url}/uploads/8217baae0afcdb540bde9f5b030f05a9/devtools-${pkgver}.tar.gz
-        ${url}/uploads/8570458d06b07d5a3ff8d30a1fc392d4/devtools-${pkgver}.tar.gz.sig
-        '0001-makechrootpkg-cache-dir.patch'
-        '0002-arch-nspawn-keep-mirrorlist.patch'
-        '0003-makechrootpkg-distcc.patch'
-        '0004-arch-nspawn-arm-fix.patch'
-        '0005-makechrootpkg-no-default-logging.patch'
-        '0006-archbuild-no-setarch.patch'
-        '0007-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER.patch'
-        '0008-makechrootpkg-gotmpdir.patch'
-        0009-Revert-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACK.patch
-        0010-makechrootpkg-don-t-delete-PACKAGER-and-fix-MAKEFLAG.patch
-        0011-Revert-makechrootpkg-no-default-logging.patch
-        )
+source=(${url}/uploads/f0e6fd93923fd7b81f1574081d722c39/devtools-${pkgver}.tar.gz
+  ${url}/uploads/7153224a91ad9785b4209f8426e260a4/devtools-${pkgver}.tar.gz.sig
+  0001-makechrootpkg-cache-dir.patch
+  0002-arch-nspawn-keep-mirrorlist.patch
+  0003-makechrootpkg-distcc.patch
+  0004-arch-nspawn-arm-fix.patch
+  0005-makechrootpkg-no-default-logging.patch
+  0006-archbuild-no-setarch.patch
+  0007-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER.patch
+  0008-makechrootpkg-gotmpdir.patch
+  0009-arm-helpers.patch
+  0010-Revert-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACK.patch
+  0011-makechrootpkg-don-t-delete-PACKAGER-and-fix-MAKEFLAG.patch
+  0012-Revert-makechrootpkg-no-default-logging.patch
+)
 validpgpkeys=(
   '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC' # Pierre Schmitz <pierre@archlinux.org>
   '86CFFCA918CF3AF47147588051E8B148A9999C34' # Evangelos Foutras <foutrelis@archlinux.org>
@@ -41,32 +42,34 @@ validpgpkeys=(
   '6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD' # Allan McRae (Developer) <allan@archlinux.org>
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak <anthraxx@archlinux.org>
 )
-sha256sums=('0938d41b4bc469e62d86d2a287612a090640f6eebde92137b8bd7727b89e95dd'
+sha256sums=('8ade36f4102ef73b9e4db0b6d7a2a8111583ce3a6f990dfbef061c050af5ef4a'
             'SKIP'
-            '618bda0dad5337f8e1500832a5f255300802e94ada7711907dc47f2569e9f519'
-            'b0e43fb242096127aba846d9f597bb31c34a5de636e4bd473a2fdf63d9a89976'
-            'd6ef2ff23accb15b554cf54d75ca5a55ff67400c0852d2646a3bd5533d1ed70d'
-            '9d9e6949882d89dfb1cc8dc833dbb1f4bb4a0d1be50439a3ae27e78820df3763'
-            '1d6f17cc9c77690bdd007e276da52a6acf54b52dbe081ce6c6767a3fa1b5b113'
-            '2f68d22a0c04fe6a47266a9e2b68b90b092be6ab5888686609fd85b19ed8c5b3'
-            '3b6d1b20d5145d13c8d8b8fd4a6555034579067dcb768ea574e29bfb7101fb09'
-            '1162044b55ebf6cbec81da94dd1d85e48657311f03e322f3a17dc22e060b54a1'
-            '535613ff680af104be96410ac1e99e3a2ffd2d36d5dff0eeaf2782f4bba4e7ea'
-            '983cb01e166ea9869486d4784fcff9001e2f73de7bbb6f7688c9a1586133e636'
-            '731c617b91c40d5f753e3940f879aa07fb523f448cec68acc1b2f8561d1a7ef1')
-b2sums=('007f62b6cb3f06904fcafec4869a43136643bd364a7f0f314c792c08fbdafafaf8a268f8a372f78402deaa1f87bfc3f2fc7099f78742c6776d4ac49fe4884d58'
+            'f78d0e464c92cf555462807fea5cbd163b29bbf773319e68d65f0a9e73091e3f'
+            '68525b1723fd9dc1e092ef37a19dfb2341682c5bb72cac4c9b14dcbe486aa3d8'
+            'a251ef61096f6ee7ff132677ef24e898251a7933d0e5565591995158bc7b81a1'
+            'dae31a8361c1e9b3d760d2c07801acaa774c4127eefc7b0db1d970eea0a80989'
+            '81cdc9d6cb4b51151bd5b0cf9b3cdb7a283abe0340358cd1b12e65d29ad17a74'
+            'a9cee974f426cad3553cde8d895d3d61f524fdeb4c238e6b82d550201ec2bede'
+            'abe38f1eb6cb28f9f85f3af0a58b2651b73f504f879de145c3d34f2bb4d525ff'
+            '77774f43f6d5025a996b0f35d39f103a5de5b26c213c90c62e554d3304f3a5e2'
+            'b1faec36eaa7fbfd16b7e3790a0ec73934ce2e7ff65887f34fe5f35a975cb20c'
+            'b5ac9f0cc0a757d97d9011e7d95242fdb87dc792cde3fbb3e5c263b97bdec7e3'
+            'b4777d3366ccfa1d949487f2a4608c894bc306e8be0e3b93faf2791087e6a250'
+            '86fec142261204b8c0ae7fa35c456edcdf289ba751cf1d415209d2e3ce8f746c')
+b2sums=('448f44882617794ffb26a146fa92e2b2649d25791751d9b9c5d6872880d0889a02c95d0761979b5afdda9d05bb43d38509d13d8a99c8426def470ffe12e05d8d'
         'SKIP'
-        '1d1a9c5ea3279dc0bae47265f5068b6fae2de63c6f81cba0a713b36b84ddb60f5e982f5e3acc21dd2316fbf9b756036091c51545f1fa1a623628e72bbe2b717d'
-        'ed5c5c92caf67e13ba06dae6c73d775786eaf640fbc06cb70faf0d0f088f9c092fda2be76d767b20d96a10c670818d3bf7ebbc96467418234add7b88f308dc34'
-        '4406f49a909b7101e2950ae6ee0484f6e71da41396d2a6884b0df996d06fc94026624cc2e87f237b5ffb017414f6c7cd34ef881234654763c4e194c9a1460db2'
-        '4d8c095d07218f1f7d252e1a2cb0f01cf4c2fd856a9dfaa06006e51a32107b53e3ec0ce19606ed5f2c9888863b08330dd4ce2f95d0df8c585edcffe85dd4a094'
-        '8a672b6debaac19baf2189acbb72b027860bf6d16306feb8d93f48c5ef32f5d073a618a04c65ed645f47d46332b0cead282b63950b2dab0efcab23b38cc61dc8'
-        'd796e4c6c8522889d803fe6ee6f52cec548e34db28bb2aeb7a62d7d3cb5e357692d83292d6b51045bc799e3f1ce985583b905b0dd9d2b22cfbdd430e6a60f5c8'
-        '9003b89871dcb20f36991a28a3095762191ed9101283504a3a986e38d1b9f207a5db6d7500f047ee40dea6fe17a21a56a94aba5816ad686490d7534cdf77b715'
-        '66b23af5326e0031657f2499ae004cf922b71623798f885d7c777fa1cf44172db2ae05d7128bb932df3f3f2a7c47b418d428687c9f149c2d0b487ec6bd68571e'
-        '31e466957a007b73cd29d01ed27c010f96a1d554a52298b02ed562e919dca10dc953194939191013598d61969b5fd11872e5b7febd368d494bb471bb58d20a9f'
-        '52647c4649bb71ea73b96accb4439d684fd5db4596a1e273af0fd46d9ccaf65043ce2079701bde52c6e6d07efd19a0c740a680c58cf25a1909f675310eddce49'
-        'e27ecf3d60f5b65c4c60836a168d9fa74881caf30f147286689f88de66591cccd2c9078a4372b687a7dea737615a5b77e4dd9b314f4948158739e5ae6ec82edd')
+        '9312e2e9cf2a7e11063ad85f421f5fc5b3ed836ab544f8a910b0de6863a24a38681a051791dfa337f679faa8060146568cf37274ecd6d0e3149ff4cff1990c5a'
+        '4c4bfa76817301dfdd77b4a87921cce4ae9025e1a54edf21fe550f60d0c2c6108c6bc6470003cd48c657244b7ef604c6a92edf200e8d420e3f3a2993c02cb032'
+        'c26a8f9218bf8c2fb502eb637df9998b1957abe5268fb71d9fdb7f889a22c64889e3e5b823209049b4db584ffcade52533121aa45a23759cb5c37be30756649f'
+        '6db458ceda4b620141000d414cfa60682bedff379ab00750f925d0fb0010b8aacbdd6de9cfcd16cb4cb7dcf64affed85a3afdd306160ea4a69586e3004582abc'
+        '87f1d3e79ce31b023ec5d2cf25436120b8ba55a67e1b719123b2c0d4120d358f9a48cabffa13c085275d90220e4fbd2e6e6cd456bf92a44994dbab8d5a2184db'
+        '3bd0dbcdff2db2bc216a8c50a45af42bbb34f7dc1be28b91f9de296b1b8cb03efd954d6b5611aba3612917696573d8a2c22e2a12851655adeff64d7a7774274b'
+        '14405c09fc8e335ca7314faf2158bb887aea6ea2d8d7d2362fc3b408307edb6354741afdb5fe04fc07a0b25aa84432d7f844d3c7e16b893d060618bdd281d84e'
+        '6652d1550ab9f786f552c471f02d17ba7372f15eb144cba8f84c0ef84629c7791f333f4b9e89e89631df66fb0c77d42d106f95c731106000eac28993268bb9d1'
+        '7649acda1282f143f5ba72b2e76376ab3677835c9f9c43260bb02dc5676df7752a57e4db4f17d621012d508a32c274a563ef445ea70d6d5f25b4c9fc64835a07'
+        '8da922d06c7d950ef1115878c9a79bd6176647ac96cefc658d8d440d4a7b7512657476df235d7939cbf3c1b66a6a79f774dd89d9d3e0fa5a4bc86bf3f2bbbbe0'
+        '6a99fdd39dbece2e7310d69a4d344f09440ffdd363b25c4b90d8c76ef812656a3c180b30aaf052bb6d78aa19fa5f1ba30792be511827d08b53f90816a22cf78f'
+        'ed32c5a6642e9013bf37f1ea74052b9045969c0c434e7a59bb17193996f36461732cb135e2a2f366ef95ca645a99ca0d2048dc0f8f0c4eb72054e8f37b9d4752')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"

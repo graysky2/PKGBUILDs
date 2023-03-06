@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 6.2.0 Kernel Configuration
+# Linux/arm 6.2.2 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -5823,7 +5823,7 @@ CONFIG_SND_SOC_WM5102=m
 # CONFIG_SND_SOC_WM8711 is not set
 # CONFIG_SND_SOC_WM8728 is not set
 CONFIG_SND_SOC_WM8731=m
-# CONFIG_SND_SOC_WM8731_I2C is not set
+CONFIG_SND_SOC_WM8731_I2C=m
 # CONFIG_SND_SOC_WM8731_SPI is not set
 # CONFIG_SND_SOC_WM8737 is not set
 CONFIG_SND_SOC_WM8741=m

@@ -5,12 +5,12 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=ac2e77f84a6a02c07f094f0857bec98de4e8a03c
+_commit=63a395ebb02dc4ae4e461d50cd21fc2dd7316e0d
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="http://www.kernel.org/"
 arch=(armv7h aarch64)
@@ -29,14 +29,14 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('09449bcc79ca59158f5b67956d7d73f2'
+md5sums=('acc57bebf5ee8ec2258f5676703e3cf1'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '441ec084c47cddc53e592fb0cbce4edf'
          'd1a9b105e3d6b8c4cf2a8411258f7fdf')
-md5sums_armv7h=('ddf89bb29d919479ea4f8145cb63b6f9'
+md5sums_armv7h=('161ab7af89a85c44bf298910489cd1eb'
                 '177bbdbe1baa46a04dcba86352cfa3fe')
 md5sums_aarch64=('3fe87b6f006e8d074fc5815eca84a77c'
                  '7e4403dea857e40005bf76beda9927ff')

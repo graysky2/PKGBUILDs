@@ -10,7 +10,7 @@ _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -96,6 +96,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_srcname}"
+
+  export KCFLAGS=' -mcpu=cortex-a72'
+  export KCPPFLAGS=' -mcpu=cortex-a72'
 
   _make "$_image" modules dtbs
 }

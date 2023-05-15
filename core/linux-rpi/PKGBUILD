@@ -5,12 +5,12 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=1812c4b94f32335cabc0885305201735f6ea7525
+_commit=5d9286ce80e5e89d6deca5e5c3c2d01e1b21244a
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -31,7 +31,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('5a66376a8a0e6af1b48dca47136be01b'
+md5sums=('d48a1eedd13e62cc197c594dfa17d9f8'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
@@ -81,7 +81,7 @@ prepare() {
     fi
     sed '/^CONFIG_LOCALVERSION=/s,.*$,CONFIG_LOCALVERSION="-ARCH",' .config >$startdir/newconfig.$_config
     echo "verify that newconfig.$_config is fit for purpose then redefine $_config"
-    exit
+    exit 5
   else
     make bcm2711_defconfig
     make -s kernelrelease | sed 's/rpi-.*$/rpi-ARCH/' > version

@@ -39,7 +39,7 @@ md5sums=('52669d64b70c1a917b40b10d6c4a35cf'
          '441ec084c47cddc53e592fb0cbce4edf'
          '1ba398db86c6889e23099572fea17088')
 md5sums_armv7h=('8176d0f008d96ae1a673a58681629c16'
-                '177bbdbe1baa46a04dcba86352cfa3fe')
+                'a99311daa39248cfc9b6541a0a0a5f09')
 md5sums_aarch64=('fe5adfa29634cedf3e682c80bc7d1a5d'
                  '7e4403dea857e40005bf76beda9927ff')
 

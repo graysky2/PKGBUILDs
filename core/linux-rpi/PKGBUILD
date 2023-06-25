@@ -127,11 +127,11 @@ _package() {
     linux-raspberrypi-latest
     linux-raspberrypi4
   )
-  install=${pkgname}.install
   backup=(
     /boot/config.txt
     /boot/cmdline.txt
   )
+  install=${pkgname}.install
 
   cd "${srcdir}/${_srcname}"
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -260,7 +260,7 @@ _package-headers() {
       application/x-pie-executable\;*) # Relocatable binaries
         strip -v $STRIP_SHARED "$file" ;;
     esac
-  done < <(find "$builddir" -type f -perm -u+x)
+  done < <(find "$builddir" -type f -perm -u+x -print0)
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
@@ -273,3 +273,5 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:

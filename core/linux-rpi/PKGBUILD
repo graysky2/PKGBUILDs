@@ -5,11 +5,11 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=5a9c53419ab2e01cb99cc4fca0d65e2e0a6af864
+_commit=368412bf43033cfa8eed77923e76e7405cfebb3f
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.4.5
+pkgver=6.4.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -31,7 +31,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('9bf7481e67d02804263a15301a53048c'
+md5sums=('65bc6472787f84c0a5b93b07deef5f1c'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'

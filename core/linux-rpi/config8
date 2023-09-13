@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.5.2 Kernel Configuration
+# Linux/arm64 6.5.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -4833,10 +4833,7 @@ CONFIG_VIDEOBUF2_DMA_SG=m
 #
 CONFIG_MEDIA_ATTACH=y
 CONFIG_VIDEO_IR_I2C=m
-
-#
-# Camera sensor devices
-#
+CONFIG_VIDEO_CAMERA_SENSOR=y
 # CONFIG_VIDEO_AR0521 is not set
 CONFIG_VIDEO_ARDUCAM_64MP=m
 CONFIG_VIDEO_ARDUCAM_PIVARIETY=m
@@ -4907,7 +4904,6 @@ CONFIG_VIDEO_OV9282=m
 # CONFIG_VIDEO_ST_VGXY61 is not set
 # CONFIG_VIDEO_CCS is not set
 # CONFIG_VIDEO_ET8EK8 is not set
-# end of Camera sensor devices
 
 #
 # Lens drivers

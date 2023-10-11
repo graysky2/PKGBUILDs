@@ -5,11 +5,11 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=45cba36beae797f0452e3e0fb76a86247307d51d
+_commit=435d59f6faabd23b3e624af304205116107b32a8
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.5.6
+pkgver=6.5.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -31,7 +31,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('8bc9216c0109c9b21b92ae657465a70e'
+md5sums=('18100dbbdfc116d2158aa4599859be5f'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
@@ -40,7 +40,7 @@ md5sums=('8bc9216c0109c9b21b92ae657465a70e'
          'c8f84694321e249492c80149833671d7')
 md5sums_armv7h=('dbfb69537ba3b5a3c41c35aae1294227'
                 'a99311daa39248cfc9b6541a0a0a5f09')
-md5sums_aarch64=('8ff11c79a5f3f3e3337ed72db17d2d04'
+md5sums_aarch64=('7fcae1999afbd3a21322199499636d30'
                  '7e4403dea857e40005bf76beda9927ff')
 
 # setup vars

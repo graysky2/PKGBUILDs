@@ -5,11 +5,11 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=7da1504676242a0f46ec39a4387761d26971a876
+_commit=6ed9ab741a935012ad3689d3bab6c2b684173ff3
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.5.9
+pkgver=6.6
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -31,16 +31,16 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('fc03da015603c08d413fcc98cb50969b'
+md5sums=('721eba449aa3122f52d0d7201af5ec22'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '441ec084c47cddc53e592fb0cbce4edf'
          'c8f84694321e249492c80149833671d7')
-md5sums_armv7h=('aabd8e761427bfc8c344ba297afaf7a9'
+md5sums_armv7h=('f745470687662149071b00c0da205f2b'
                 'a99311daa39248cfc9b6541a0a0a5f09')
-md5sums_aarch64=('08741fe9557f4ed174e52bdce8f11775'
+md5sums_aarch64=('07367d08f83998ae07ad2d892eabb805'
                  '7e4403dea857e40005bf76beda9927ff')
 
 # setup vars
@@ -49,11 +49,6 @@ if [[ $CARCH == "armv7h" ]]; then
 elif [[ $CARCH == "aarch64" ]]; then
   _kernel=kernel8.img KARCH=arm64 _image=Image _config=config8 _bconfig=config8.txt
 fi
-
-_make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
-}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -88,7 +83,7 @@ prepare() {
     make mrproper
     echo "Setting config..."
     cp ../"$_config" .config
-    _make olddefconfig
+    make olddefconfig
     diff -u ../"$_config" .config || :
     echo "Prepared $pkgbase version $(<version)"
   fi
@@ -100,7 +95,7 @@ build() {
   export KCFLAGS=' -mcpu=cortex-a72'
   export KCPPFLAGS=' -mcpu=cortex-a72'
 
-  _make "$_image" modules dtbs
+  make "$_image" modules dtbs
 }
 
 _package() {
@@ -140,11 +135,11 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
-  # remove build and source links
-  rm "$modulesdir"/{source,build}
+  # remove build link
+  rm -f "$modulesdir"/build
 
   echo "Installing Arch ARM specific stuff..."
   mkdir -p "${pkgdir}"/boot

@@ -1,4 +1,4 @@
-From 8343ad4fb0d60c5333675da7509276a8e24a990c Mon Sep 17 00:00:00 2001
+From 8ff237f279d2e7a1c8413ebd3cb5eb3551a08103 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:38:35 -0400
 Subject: [PATCH 06/12] archbuild-no-setarch
@@ -8,10 +8,10 @@ Subject: [PATCH 06/12] archbuild-no-setarch
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/archbuild.in b/src/archbuild.in
-index ba3ba94..d08ab7f 100644
+index 2f3faf9..00facd1 100644
 --- a/src/archbuild.in
 +++ b/src/archbuild.in
-@@ -91,7 +91,7 @@ if ${clean_first} || [[ ! -d "${chroots}/${repo}-${arch}" ]]; then
+@@ -95,7 +95,7 @@ if ${clean_first} || [[ ! -d "${chroots}/${repo}-${arch}" ]]; then
  
  	rm -rf --one-file-system "${chroots}/${repo}-${arch}"
  	(umask 0022; mkdir -p "${chroots}/${repo}-${arch}")
@@ -21,5 +21,5 @@ index ba3ba94..d08ab7f 100644
  		-M "${makepkg_config}" \
  		"${chroots}/${repo}-${arch}/root" \
 -- 
-2.39.1
+2.42.0
 

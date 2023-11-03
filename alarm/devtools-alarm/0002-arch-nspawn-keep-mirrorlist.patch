@@ -1,4 +1,4 @@
-From dd6cc6d4e4da977657f9f4426a0c80ae9695ed46 Mon Sep 17 00:00:00 2001
+From 40d03bf81a9134b27bf0f06a8342db9e18bab30f Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:37:50 -0400
 Subject: [PATCH 02/12] arch-nspawn-keep-mirrorlist
@@ -8,10 +8,10 @@ Subject: [PATCH 02/12] arch-nspawn-keep-mirrorlist
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/arch-nspawn.in b/src/arch-nspawn.in
-index 275cff7..126203c 100644
+index 1eba0a6..3b5ba1a 100644
 --- a/src/arch-nspawn.in
 +++ b/src/arch-nspawn.in
-@@ -87,7 +87,7 @@ copy_hostconf () {
+@@ -103,7 +103,7 @@ copy_hostconf () {
  	unshare --fork --pid gpg --homedir "$working_dir"/etc/pacman.d/gnupg/ --no-permission-warning --quiet --batch --import --import-options import-local-sigs "$(pacman-conf GpgDir)"/pubring.gpg >/dev/null 2>&1
  	pacman-key --gpgdir "$working_dir"/etc/pacman.d/gnupg/ --import-trustdb "$(pacman-conf GpgDir)" >/dev/null 2>&1
  
@@ -21,5 +21,5 @@ index 275cff7..126203c 100644
  	[[ -n $pac_conf ]] && cp "$pac_conf" "$working_dir/etc/pacman.conf"
  	[[ -n $makepkg_conf ]] && cp "$makepkg_conf" "$working_dir/etc/makepkg.conf"
 -- 
-2.39.1
+2.42.0
 

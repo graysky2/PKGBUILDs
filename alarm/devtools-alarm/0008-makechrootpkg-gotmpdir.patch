@@ -1,4 +1,4 @@
-From a5e1a797bbe6ae6de24758978701d4dc497a9976 Mon Sep 17 00:00:00 2001
+From 5190ea83908dc0a56a01081fbb94983bd542009f Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:39:05 -0400
 Subject: [PATCH 08/12] makechrootpkg-gotmpdir
@@ -8,10 +8,10 @@ Subject: [PATCH 08/12] makechrootpkg-gotmpdir
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 3e70909..a3da151 100644
+index df80d94..8c9796e 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -214,7 +214,7 @@ _chrootbuild() {
+@@ -219,7 +219,7 @@ _chrootbuild() {
  	sudo --preserve-env=SOURCE_DATE_EPOCH \
  		--preserve-env=BUILDTOOL \
  		--preserve-env=BUILDTOOLVER \
@@ -21,5 +21,5 @@ index 3e70909..a3da151 100644
  	case $ret in
  		0|14)
 -- 
-2.39.1
+2.42.0
 

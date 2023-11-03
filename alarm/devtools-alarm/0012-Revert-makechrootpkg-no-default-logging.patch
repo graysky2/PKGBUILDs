@@ -1,4 +1,4 @@
-From afcc7f4891ccea248076bf302a0f937314ef543f Mon Sep 17 00:00:00 2001
+From 273c1d3470622966f050198579b99c2ad0241191 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 21 Aug 2022 13:01:05 -0400
 Subject: [PATCH 12/12] Revert "makechrootpkg-no-default-logging"
@@ -9,10 +9,10 @@ This reverts commit d5b3d143f8d846259962235925349f132aa2a2fe.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 798cc8c..a1e3242 100644
+index b770242..a87b22a 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -9,7 +9,7 @@ source /usr/share/makepkg/util/config.sh
+@@ -14,7 +14,7 @@ source /usr/share/makepkg/util/config.sh
  
  shopt -s nullglob
  
@@ -22,5 +22,5 @@ index 798cc8c..a1e3242 100644
  verifysource_args=()
  chrootdir=
 -- 
-2.39.1
+2.42.0
 

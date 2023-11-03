@@ -6,7 +6,7 @@
 
 pkgname=devtools-alarm
 _pkgname=devtools
-pkgver=20230105
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Tools for Arch Linux ARM package maintainers graysky mods'
 arch=('any')
@@ -18,8 +18,8 @@ depends=('bash' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
          'git' 'bzr' 'mercurial' 'diffutils' 'util-linux' 'awk')
 makedepends=('asciidoc')
 optdepends=('btrfs-progs: btrfs support')
-source=(${url}/uploads/f0e6fd93923fd7b81f1574081d722c39/devtools-${pkgver}.tar.gz
-  ${url}/uploads/7153224a91ad9785b4209f8426e260a4/devtools-${pkgver}.tar.gz.sig
+source=(https://gitlab.archlinux.org/archlinux/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz
+#  https://gitlab.archlinux.org/archlinux/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz.sig
   0001-makechrootpkg-cache-dir.patch
   0002-arch-nspawn-keep-mirrorlist.patch
   0003-makechrootpkg-distcc.patch
@@ -32,6 +32,7 @@ source=(${url}/uploads/f0e6fd93923fd7b81f1574081d722c39/devtools-${pkgver}.tar.g
   0010-Revert-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACK.patch
   0011-makechrootpkg-don-t-delete-PACKAGER-and-fix-MAKEFLAG.patch
   0012-Revert-makechrootpkg-no-default-logging.patch
+  0013-arch-nspawn-fix-setarch-for-armv7h.patch
 )
 validpgpkeys=(
   '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC' # Pierre Schmitz <pierre@archlinux.org>
@@ -42,37 +43,37 @@ validpgpkeys=(
   '6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD' # Allan McRae (Developer) <allan@archlinux.org>
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak <anthraxx@archlinux.org>
 )
-sha256sums=('8ade36f4102ef73b9e4db0b6d7a2a8111583ce3a6f990dfbef061c050af5ef4a'
-            'SKIP'
-            'f78d0e464c92cf555462807fea5cbd163b29bbf773319e68d65f0a9e73091e3f'
-            '68525b1723fd9dc1e092ef37a19dfb2341682c5bb72cac4c9b14dcbe486aa3d8'
-            'a251ef61096f6ee7ff132677ef24e898251a7933d0e5565591995158bc7b81a1'
-            'dae31a8361c1e9b3d760d2c07801acaa774c4127eefc7b0db1d970eea0a80989'
-            '81cdc9d6cb4b51151bd5b0cf9b3cdb7a283abe0340358cd1b12e65d29ad17a74'
-            'a9cee974f426cad3553cde8d895d3d61f524fdeb4c238e6b82d550201ec2bede'
-            'abe38f1eb6cb28f9f85f3af0a58b2651b73f504f879de145c3d34f2bb4d525ff'
-            '77774f43f6d5025a996b0f35d39f103a5de5b26c213c90c62e554d3304f3a5e2'
-            'b1faec36eaa7fbfd16b7e3790a0ec73934ce2e7ff65887f34fe5f35a975cb20c'
-            'b5ac9f0cc0a757d97d9011e7d95242fdb87dc792cde3fbb3e5c263b97bdec7e3'
-            'b4777d3366ccfa1d949487f2a4608c894bc306e8be0e3b93faf2791087e6a250'
-            '86fec142261204b8c0ae7fa35c456edcdf289ba751cf1d415209d2e3ce8f746c')
-b2sums=('448f44882617794ffb26a146fa92e2b2649d25791751d9b9c5d6872880d0889a02c95d0761979b5afdda9d05bb43d38509d13d8a99c8426def470ffe12e05d8d'
-        'SKIP'
-        '9312e2e9cf2a7e11063ad85f421f5fc5b3ed836ab544f8a910b0de6863a24a38681a051791dfa337f679faa8060146568cf37274ecd6d0e3149ff4cff1990c5a'
-        '4c4bfa76817301dfdd77b4a87921cce4ae9025e1a54edf21fe550f60d0c2c6108c6bc6470003cd48c657244b7ef604c6a92edf200e8d420e3f3a2993c02cb032'
-        'c26a8f9218bf8c2fb502eb637df9998b1957abe5268fb71d9fdb7f889a22c64889e3e5b823209049b4db584ffcade52533121aa45a23759cb5c37be30756649f'
-        '6db458ceda4b620141000d414cfa60682bedff379ab00750f925d0fb0010b8aacbdd6de9cfcd16cb4cb7dcf64affed85a3afdd306160ea4a69586e3004582abc'
-        '87f1d3e79ce31b023ec5d2cf25436120b8ba55a67e1b719123b2c0d4120d358f9a48cabffa13c085275d90220e4fbd2e6e6cd456bf92a44994dbab8d5a2184db'
-        '3bd0dbcdff2db2bc216a8c50a45af42bbb34f7dc1be28b91f9de296b1b8cb03efd954d6b5611aba3612917696573d8a2c22e2a12851655adeff64d7a7774274b'
-        '14405c09fc8e335ca7314faf2158bb887aea6ea2d8d7d2362fc3b408307edb6354741afdb5fe04fc07a0b25aa84432d7f844d3c7e16b893d060618bdd281d84e'
-        '6652d1550ab9f786f552c471f02d17ba7372f15eb144cba8f84c0ef84629c7791f333f4b9e89e89631df66fb0c77d42d106f95c731106000eac28993268bb9d1'
-        '7649acda1282f143f5ba72b2e76376ab3677835c9f9c43260bb02dc5676df7752a57e4db4f17d621012d508a32c274a563ef445ea70d6d5f25b4c9fc64835a07'
-        '8da922d06c7d950ef1115878c9a79bd6176647ac96cefc658d8d440d4a7b7512657476df235d7939cbf3c1b66a6a79f774dd89d9d3e0fa5a4bc86bf3f2bbbbe0'
-        '6a99fdd39dbece2e7310d69a4d344f09440ffdd363b25c4b90d8c76ef812656a3c180b30aaf052bb6d78aa19fa5f1ba30792be511827d08b53f90816a22cf78f'
-        'ed32c5a6642e9013bf37f1ea74052b9045969c0c434e7a59bb17193996f36461732cb135e2a2f366ef95ca645a99ca0d2048dc0f8f0c4eb72054e8f37b9d4752')
+sha256sums=('6399d1adc7aa3227fd4fde01e269a16fd4741259dd82ca310aebd26330c59410'
+            'c1112e0d13695a0d202316eeebec6767e30c147bb4d0fe70e1870dde2780ffaa'
+            '00b0f6f71beb6303f0d5440b069e0d12e75fbc3d2c4ce6dfff819900dcf4a98e'
+            '417e7362b4ed4b294878d82166721fb32e2b81d2c36c7e82fb85c624b795fe1b'
+            '4137e590f424c575115855abec230c70b3dd39c70f49429721c98f2939582b27'
+            '7478df8a1f79656fce91d8384892f7b6e39b966545b0db27372e0d4afa5a3b3f'
+            'b1b5556e6c2a15b7a4a894afa05939dc108fe4690329c85c1b17c822f86951d1'
+            '76420ce85d31345932ff647b40826e3483e6566aa8aab78b9a91b5b0a5d04cf9'
+            '3754920226a691af046ab8d60005eb88316673c6759d277f6bd8f07a96f11396'
+            '56aa882e4b067fc6a0ec7963f52b9e13dec94d08bc47807908034ea2e7a2d062'
+            'dc949142cdfe3b966871a7bc61bc80971710540c7d80a476adb209d871849ba4'
+            'cd8a4a4a4d3a26f834bf94571e472cbb9f895308014448824e16291b1daf9d75'
+            '2a0b723731f2a599601004a19bab948a93a2921b0872f075dea78da73ac2b07d'
+            '561b69478a20ef28c78744611f65a579abb0d8b998ac963879acae0a58111951')
+b2sums=('074e7b619fc2840ec7b7fa4ee1c02831c7a7d9e206ab17f19463eaece80929dcf62c329a8fe8404c904b4e24e306fd691e40fa38795e3f31e0d3db9d674f675c'
+        '3efeb77e1d9547d3f9f0fd71842b906827cc8ce5ecd4a5699e8c78ea8911cfc04a3ac3af857353f1d60c9970333294b1a409660efc6192185a53908b59f934e4'
+        'ecfdd274888bee746058ce4ea350941730dd2eae79b5a16544374dbe2a69613a2c810bcee31bc5c1d4b9eb70208d147256f2ed10fa29a1b504a181938382d115'
+        '336dee46f6da4f2c769b7a4d7bcb57799ebb8e1993d77e8dbdc8e324deefe7e4f807c4769fb1884bf2cfe1f7666af95efda1745c5a05def2fde8e9ab04c86c8c'
+        'e8fb9ed7fb339a999a4252b6c362194954581a4a3761994d7cf96b2c3988ffc4a7d00e511e2dd043595fe19d0bc5b7791e0a59552a133c2182097edde970f6f9'
+        '2a499e923d675f89df242679efa692cee0eeaa7bd49d3b74afa6d5a45d6d74620defb058e2cac1b7c19c373499a9b8a64fbe01df92a79a8182d8852f11d7e508'
+        '5a700819c0d37248d310c0f36869c409880d3c46a1b21b8e820891d22e0424c13a759e50340d58526cbc342a5e82415888188259aaf0b7dce6b996de19455109'
+        '447e8681c9ad3d5b357569d3d5a8da590b55146c2cafc6793edcff0852e0a43e6e5d627995039a95d883a9382c05601d594ff65d4188346a014f70d1258b4006'
+        'c43a50f0870762a80da15aadb46b80a9305e149b94c8a6635cace648f598035bafdc6523de13374de11dfd97e8e0a3caae2f626f4ee98418b0dbf03f59ef050c'
+        '8a5d74c4b9dcd528f2057b0675b526daa7ce92035441323ad87466bb0f2a1cf7de1e072588675923855f26b11c405bb9f7515121af02da9c3c319a990b4bb4cc'
+        'b5b35387b979ee09410edf413194e74cbd81c9c5f54297e28f207333abad2ea4a80ab18f5cc6c9f66f743c60638215d7bf1692586ed1d1dd9ea15199e4d1f586'
+        '02e4a20d25bf5ff53374803a8d60d996fa53be5010da576b2e79442cf82b8ae7bcd3ff02623f83fe031ffd09d5dcdbf78fa978a0410c87f2c21d2a3414d76ab8'
+        'e0b43135d1bc8c97a107e70cb1a212afc5e855d54f917664ff241a1472f3add9ffbd0dc8ebae229652fd02e58d248fb4cf09dd53ad42e407f5ec1b4e8b644a3e'
+        '1a869b4c7e0e0b9e74b49849ca647df1907c19b42d85c64f692fdf7d970e2716cbe2f6cf89af59c633aa0e0659346ed1dd65fa811a19cd3eeec934755b650dc3')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-v${pkgver}"
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
@@ -83,12 +84,12 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-v${pkgver}
   make BUILDTOOLVER="${pkgver}-${pkgrel}-${arch}" PREFIX=/usr
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}-v${pkgver}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 

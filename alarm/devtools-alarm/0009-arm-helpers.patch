@@ -1,4 +1,4 @@
-From 95541c3eb4c005cf651db24c1c2ef73ec630ccda Mon Sep 17 00:00:00 2001
+From 66aca79d0f6adad3aa54f216f0af9b6c1e3a5690 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 29 Jan 2023 07:44:54 -0500
 Subject: [PATCH 09/12] arm helpers
@@ -347,5 +347,5 @@ index 0000000..ef28ddb
 +#PACMAN_AUTH=()
 +# vim: set ft=sh ts=2 sw=2 et:
 -- 
-2.39.1
+2.42.0
 

@@ -5,12 +5,12 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=77f41f30fecf362fabe5290c60f6d96aeb3083f0
+_commit=95170231034b64cdd7ba92c256106adca8a9c6a1
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -26,23 +26,21 @@ source_aarch64=('config8' 'config8.txt')
 source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         cmdline.txt
         0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-        0002-Input-xpad-add-VID-for-Turtle-Beach-controllers.patch
         linux.preset
         60-linux.hook
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('81c36fb207f6bb0a11844f8c471b84a5'
+md5sums=('a2e9ee0a031a2fcbc7ce55a910d8349c'
          '3bab7426d8c8818dda8353da3892a41f'
          'f66a7ea3feb708d398ef57e4da4815e9'
-         'f89e0666bf9f0799a074379f29e6004d'
          '86d4a35722b5410e3b29fc92dae15d4b'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '441ec084c47cddc53e592fb0cbce4edf'
          'c8f84694321e249492c80149833671d7')
-md5sums_armv7h=('9d46542f2b22ed361553e75fce9f624e'
+md5sums_armv7h=('dd20c8448a6680d732fcbaa5564cfb96'
                 'a99311daa39248cfc9b6541a0a0a5f09')
-md5sums_aarch64=('2531ff63e47caabc87f43dfae666d7c7'
+md5sums_aarch64=('3b0ad6980aeeab915f281997593eefb9'
                  '7e4403dea857e40005bf76beda9927ff')
 
 # setup vars
@@ -57,9 +55,6 @@ prepare() {
 
   # consistent behavior of lscpu on arm/arm64
   patch -p1 -i ../0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-
-  # xbox controller support
-  patch -p1 -i ../0002-Input-xpad-add-VID-for-Turtle-Beach-controllers.patch
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel

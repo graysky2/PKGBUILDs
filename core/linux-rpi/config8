@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.6.2 Kernel Configuration
+# Linux/arm64 6.6.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -6210,7 +6210,8 @@ CONFIG_HID_MAGICMOUSE=m
 CONFIG_HID_MICROSOFT=m
 CONFIG_HID_MONTEREY=m
 CONFIG_HID_MULTITOUCH=m
-# CONFIG_HID_NINTENDO is not set
+CONFIG_HID_NINTENDO=m
+CONFIG_NINTENDO_FF=y
 # CONFIG_HID_NTI is not set
 CONFIG_HID_NTRIG=m
 # CONFIG_HID_NVIDIA_SHIELD is not set

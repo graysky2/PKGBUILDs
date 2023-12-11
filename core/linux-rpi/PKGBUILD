@@ -1,16 +1,16 @@
-# Maintainer: graysky <graysky@archlinux.us>
+# Maintainer: graysky <therealgraysky AT proton DOT me>
 # Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
 # Maintainer: Oleg Rakhmanov <oleg@archlinuxarm.org>
 # Maintainer: Dave Higham <pepedog@archlinuxarm.org>
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=24ec6335f52e1fe3a895a1a2675200f452694923
+_commit=45aef7f9a38b871620fba7878b706ce9fc5879ad
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.6.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -32,7 +32,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('b04201ec76e17e06a0a8cd45bb3bfaf0'
+md5sums=('2ae6c793c26270a3c7700861f32b80ea'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'f66a7ea3feb708d398ef57e4da4815e9'
@@ -99,7 +99,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="RPi Foundation patched Linux kernel and modules"
+  pkgdesc="Linux kernel and modules (RPi Foundation fork)"
   depends=(
     coreutils
     firmware-raspberrypi
@@ -116,11 +116,8 @@ _package() {
   )
   conflicts=(
     linux
+    linux-rpi-16k
     uboot-raspberrypi
-  )
-  replaces=(
-    linux-raspberrypi-latest
-    linux-raspberrypi4
   )
   install=${pkgname}.install
   backup=(
@@ -139,7 +136,7 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build link
-  rm "$modulesdir"/build
+  rm -f "$modulesdir"/build
 
   echo "Installing Arch ARM specific stuff..."
   mkdir -p "${pkgdir}"/boot
@@ -175,10 +172,9 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="RPi Foundation header and scripts for building modules for Linux kernel"
+  pkgdesc="Headers and scripts for building modules for Linux kernel"
   provides=("linux-headers=${pkgver}")
-  conflicts=('linux-headers')
-  replaces=('linux-raspberrypi-latest-headers' 'linux-raspberrypi4-headers')
+  conflicts=('linux-headers' 'linux-rpi-16k-headers')
 
   cd ${_srcname}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

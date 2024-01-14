@@ -5,12 +5,12 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=bd0197e21fb8c1a49eedb5e00891882361c331da
+_commit=d4044981055857185753d2ee66920a26375d90b0
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
 pkgver=6.7rc6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -32,7 +32,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         90-linux.hook
         archarm.diffconfig
 )
-md5sums=('59f14a3a4abac56afb86e00c3cca62e5'
+md5sums=('0d8747e147b9e3b22c3fc108a1b41594'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'f66a7ea3feb708d398ef57e4da4815e9'
@@ -40,8 +40,8 @@ md5sums=('59f14a3a4abac56afb86e00c3cca62e5'
          '0a5f16bfec6ad982a2f6782724cca8ba'
          '441ec084c47cddc53e592fb0cbce4edf'
          'c8f84694321e249492c80149833671d7')
-md5sums_armv7h=('a9bf150a6194e236339c8d24ab5174ec')
-md5sums_aarch64=('3798d0888df41b5a8a45a4b5f980cfc4')
+md5sums_armv7h=('8997e438968d3966a1ea37a1498cdfe6')
+md5sums_aarch64=('2c9e9dfdfa480c5a7ef5abc74b06c22c')
 
 # setup vars
 if [[ $CARCH == "armv7h" ]]; then
@@ -76,17 +76,17 @@ prepare() {
       # https://archlinuxarm.org/forum/viewtopic.php?f=23&t=16377
       scripts/config --enable CONFIG_LRU_GEN_ENABLED
     fi
-    sed '/^CONFIG_LOCALVERSION=/s,.*$,CONFIG_LOCALVERSION="-ARCH",' .config >$startdir/newconfig.$_config
+    # bcm2711_defconfig inserts either -v7l or -v8 for CONFIG_LOCALVERSION= so set this to null
+    sed '/^CONFIG_LOCALVERSION=/s,.*$,CONFIG_LOCALVERSION="",' .config >$startdir/newconfig.$_config
     echo "verify that newconfig.$_config is fit for purpose then redefine $_config"
     exit
   else
-    make bcm2711_defconfig
-    make -s kernelrelease | sed 's/rpi-.*$/rpi-ARCH/' > version
-    make mrproper
     echo "Setting config..."
     cp ../"$_config" .config
     make olddefconfig
     diff -u ../"$_config" .config || :
+
+    make -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
   fi
 }

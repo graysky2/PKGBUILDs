@@ -5,7 +5,7 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=d4044981055857185753d2ee66920a26375d90b0
+_commit=c02d651a6cb37be60ec54cec8d73e8661ca10055
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
@@ -28,17 +28,13 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         config.txt
         0001-Make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
         linux.preset
-        60-linux.hook
-        90-linux.hook
         archarm.diffconfig
 )
-md5sums=('0d8747e147b9e3b22c3fc108a1b41594'
+md5sums=('b9dddf9d2db2712d2e1497831468922b'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
-         '0a5f16bfec6ad982a2f6782724cca8ba'
-         '441ec084c47cddc53e592fb0cbce4edf'
          'c8f84694321e249492c80149833671d7')
 md5sums_armv7h=('8997e438968d3966a1ea37a1498cdfe6')
 md5sums_aarch64=('2c9e9dfdfa480c5a7ef5abc74b06c22c')
@@ -166,11 +162,9 @@ _package() {
   sed "${_subst}" ../linux.preset |
     install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
 
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
+  # rather than use another hook (90-linux.hook) rely on mkinitcpio's 90-mkinitcpio-install.hook
+  # which avoids a double run of mkinitcpio that can occur
+  touch "${pkgdir}/usr/lib/modules/$(<version)/vmlinuz"
 }
 
 _package-headers() {

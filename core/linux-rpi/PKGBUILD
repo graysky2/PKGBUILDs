@@ -5,12 +5,12 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=c02d651a6cb37be60ec54cec8d73e8661ca10055
+_commit=f43fbd3371e5ce89761cec40c1a993d4f3bcc476
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.7rc6
-pkgrel=2
+pkgver=6.7rc8
+pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
 arch=(armv7h aarch64)
@@ -30,7 +30,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         linux.preset
         archarm.diffconfig
 )
-md5sums=('b9dddf9d2db2712d2e1497831468922b'
+md5sums=('2c6e7b9bdc1f7aea7091ea6ee8c67079'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'f66a7ea3feb708d398ef57e4da4815e9'

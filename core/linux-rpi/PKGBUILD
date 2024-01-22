@@ -5,11 +5,11 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=f43fbd3371e5ce89761cec40c1a993d4f3bcc476
+_commit=59cda3397e2f0ce9a172f350dd66a898e9aab617
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.7rc8
+pkgver=6.7.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -30,14 +30,14 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         linux.preset
         archarm.diffconfig
 )
-md5sums=('2c6e7b9bdc1f7aea7091ea6ee8c67079'
+md5sums=('ab669fb0b6ae021afcaa727f89f9df09'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'f66a7ea3feb708d398ef57e4da4815e9'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'c8f84694321e249492c80149833671d7')
-md5sums_armv7h=('8997e438968d3966a1ea37a1498cdfe6')
-md5sums_aarch64=('2c9e9dfdfa480c5a7ef5abc74b06c22c')
+md5sums_armv7h=('e7d67cc40675b83ee3428d1b58616a2b')
+md5sums_aarch64=('b6b5c4588317b9ef00d2a6dfb5ec0f1d')
 
 # setup vars
 if [[ $CARCH == "armv7h" ]]; then

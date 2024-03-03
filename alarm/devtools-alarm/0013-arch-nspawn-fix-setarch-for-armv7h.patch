@@ -1,7 +1,7 @@
-From 8f9ffd73b13189a99000e80bc1aaaddbb9d4df17 Mon Sep 17 00:00:00 2001
+From 46c8038e9f9e1cbab3a3d08309dfc24e6a3a2d41 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 3 Mar 2024 04:09:46 -0500
-Subject: [PATCH] arch-nspawn: fix setarch for armv7h
+Subject: [PATCH 13/13] arch-nspawn: fix setarch for armv7h
 
 ---
  src/arch-nspawn.in | 3 +++

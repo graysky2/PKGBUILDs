@@ -1,17 +1,17 @@
-From ad4abba83c12e9c72e80dcb6d839c6ebeebf1beb Mon Sep 17 00:00:00 2001
+From f53dcd6bd73f3e20e1a5308b8ff730e4acc3785f Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 28 Jan 2023 08:38:43 -0500
-Subject: [PATCH 01/12] makechrootpkg cache dir
+Subject: [PATCH 01/13] makechrootpkg cache dir
 
 ---
- src/makechrootpkg.in | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ src/makechrootpkg.in | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 2cfd849..5b0309d 100644
+index 14b8f11..a6d1317 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -62,6 +62,7 @@ usage() {
+@@ -67,6 +67,7 @@ usage() {
  	echo 'Flags:'
  	echo '-h         This help'
  	echo '-c         Clean the chroot before building'
@@ -19,14 +19,7 @@ index 2cfd849..5b0309d 100644
  	echo '-d <dir>   Bind directory into build chroot as read-write'
  	echo '-D <dir>   Bind directory into build chroot as read-only'
  	echo '-u         Update the working copy of the chroot before building'
-@@ -280,12 +281,13 @@ move_products() {
- }
- # }}}
- 
--while getopts 'hcur:I:l:nCTD:d:U:' arg; do
-+while getopts 'hcuX:r:I:l:nCTD:d:U:' arg; do
- 	case "$arg" in
- 		c) clean_first=1 ;;
+@@ -292,6 +293,7 @@ while getopts 'hcur:I:l:nCTD:d:U:x:' arg; do
  		D) bindmounts_ro+=("--bind-ro=$OPTARG") ;;
  		d) bindmounts_rw+=("--bind=$OPTARG") ;;
  		u) update_first=1 ;;
@@ -34,7 +27,7 @@ index 2cfd849..5b0309d 100644
  		r) passeddir="$OPTARG" ;;
  		I) install_pkgs+=("$OPTARG") ;;
  		l) copy="$OPTARG" ;;
-@@ -308,6 +310,10 @@ chrootdir=$(readlink -e "$passeddir")
+@@ -315,6 +317,10 @@ chrootdir=$(readlink -e "$passeddir")
  [[ ! -d $chrootdir ]] && die "No chroot dir defined, or invalid path '%s'" "$passeddir"
  [[ ! -d $chrootdir/root ]] && die "Missing chroot dir root directory. Try using: mkarchroot %s/root base-devel" "$chrootdir"
  
@@ -45,15 +38,6 @@ index 2cfd849..5b0309d 100644
  if [[ ${copy:0:1} = / ]]; then
  	copydir=$copy
  else
-@@ -368,7 +374,7 @@ download_sources
- 
- prepare_chroot
- 
--if arch-nspawn "$copydir" \
-+if arch-nspawn $cache_dir "$copydir" \
- 	--bind="${PWD//:/\\:}:/startdir" \
- 	--bind="${SRCDEST//:/\\:}:/srcdest" \
- 	--tmpfs="/tmp:${tmp_opts}" \
 -- 
-2.42.0
+2.44.0
 

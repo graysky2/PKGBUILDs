@@ -1,7 +1,7 @@
-From 66aca79d0f6adad3aa54f216f0af9b6c1e3a5690 Mon Sep 17 00:00:00 2001
+From f4bf6b52172a1f17e6282d589aedee38118cabcd Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 29 Jan 2023 07:44:54 -0500
-Subject: [PATCH 09/12] arm helpers
+Subject: [PATCH 09/13] arm helpers
 
 ---
  config/makepkg/aarch64.conf | 162 ++++++++++++++++++++++++++++++++++++
@@ -347,5 +347,5 @@ index 0000000..ef28ddb
 +#PACMAN_AUTH=()
 +# vim: set ft=sh ts=2 sw=2 et:
 -- 
-2.42.0
+2.44.0
 

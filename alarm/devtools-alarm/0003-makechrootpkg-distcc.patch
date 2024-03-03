@@ -1,17 +1,17 @@
-From 5927b6e9da7a103c674a239a880c0307c2779891 Mon Sep 17 00:00:00 2001
+From 81fca2256ec9f2e3eb95eaef0033a4f585cf9edd Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:37:59 -0400
-Subject: [PATCH 03/12] makechrootpkg-distcc
+Subject: [PATCH 03/13] makechrootpkg-distcc
 
 ---
  src/makechrootpkg.in | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 5b0309d..8e43f4f 100644
+index a6d1317..b278695 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -214,10 +214,13 @@ _chrootbuild() {
+@@ -220,10 +220,13 @@ _chrootbuild() {
  	# use "$" in arguments to commands with "sudo -i".  ${foo} or
  	# ${1} is OK, but $foo or $1 isn't.
  	# https://bugzilla.sudo.ws/show_bug.cgi?id=765
@@ -27,5 +27,5 @@ index 5b0309d..8e43f4f 100644
  	case $ret in
  		0|14)
 -- 
-2.42.0
+2.44.0
 

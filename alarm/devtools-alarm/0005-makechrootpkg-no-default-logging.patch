@@ -1,17 +1,17 @@
-From a6930d64c956e0f01d46e232f0c8d6efb43671f0 Mon Sep 17 00:00:00 2001
+From df05fe4d13b4da3dd6d820f49661fe8036302253 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:38:23 -0400
-Subject: [PATCH 05/12] makechrootpkg-no-default-logging
+Subject: [PATCH 05/13] makechrootpkg-no-default-logging
 
 ---
  src/makechrootpkg.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index d3ab2a1..a33219d 100644
+index ca7c554..db8cb55 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -14,7 +14,7 @@ source /usr/share/makepkg/util/config.sh
+@@ -17,7 +17,7 @@ source /usr/share/makepkg/util/util.sh
  
  shopt -s nullglob
  
@@ -21,5 +21,5 @@ index d3ab2a1..a33219d 100644
  verifysource_args=()
  chrootdir=
 -- 
-2.42.0
+2.44.0
 

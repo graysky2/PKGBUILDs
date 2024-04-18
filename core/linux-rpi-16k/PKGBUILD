@@ -7,11 +7,11 @@
 buildarch=8
 
 pkgbase=linux-rpi-16k
-_commit=492952d4b1f9b31f5d8d9ac1dffac99c17005c0d
+_commit=b9220e893b47f62b42bb8fc9f7ace88df6a4845d
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.8.6
+pkgver=6.8.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -31,7 +31,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         linux.preset
         archarm.diffconfig
 )
-md5sums=('895f402a92f30bca58af36a2d4fa4775'
+md5sums=('121e17d0147e529698abd7913e506eeb'
          '3bab7426d8c8818dda8353da3892a41f'
          '16c484af9f72b9275afcf83a6b8eab36'
          'd7ab6e239f7770c916a543246f695788'

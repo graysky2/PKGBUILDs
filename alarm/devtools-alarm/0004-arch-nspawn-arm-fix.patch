@@ -1,4 +1,4 @@
-From 9c2ba09b0c0b5e0f686bfe2056cebad6f843e723 Mon Sep 17 00:00:00 2001
+From f52f6f53d92455f91e347ff2fb771edf6ad08596 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:38:10 -0400
 Subject: [PATCH 04/13] arch-nspawn-arm-fix
@@ -8,7 +8,7 @@ Subject: [PATCH 04/13] arch-nspawn-arm-fix
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index b278695..ca7c554 100644
+index c8666b9..762174d 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
 @@ -251,7 +251,7 @@ download_sources() {
@@ -21,5 +21,5 @@ index b278695..ca7c554 100644
  }
  
 -- 
-2.44.0
+2.45.0
 

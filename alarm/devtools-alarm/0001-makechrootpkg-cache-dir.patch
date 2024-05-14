@@ -1,4 +1,4 @@
-From f53dcd6bd73f3e20e1a5308b8ff730e4acc3785f Mon Sep 17 00:00:00 2001
+From cf7fe58b35e7ef4d261565e99baad4fbaaeccd2c Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 28 Jan 2023 08:38:43 -0500
 Subject: [PATCH 01/13] makechrootpkg cache dir
@@ -8,7 +8,7 @@ Subject: [PATCH 01/13] makechrootpkg cache dir
  1 file changed, 6 insertions(+)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 14b8f11..a6d1317 100644
+index 5378eb1..5c748e9 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
 @@ -67,6 +67,7 @@ usage() {
@@ -39,5 +39,5 @@ index 14b8f11..a6d1317 100644
  	copydir=$copy
  else
 -- 
-2.44.0
+2.45.0
 

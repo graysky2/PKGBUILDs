@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.9.0-rc7 Kernel Configuration
+# Linux/arm64 6.9.1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 14.1.1 20240507"
 CONFIG_CC_IS_GCC=y
@@ -5408,15 +5408,15 @@ CONFIG_AUXDISPLAY=y
 CONFIG_CHARLCD=m
 CONFIG_HD44780_COMMON=m
 CONFIG_HD44780=m
-# CONFIG_IMG_ASCII_LCD is not set
-# CONFIG_HT16K33 is not set
-# CONFIG_MAX6959 is not set
 # CONFIG_LCD2S is not set
-# CONFIG_SEG_LED_GPIO is not set
 # CONFIG_PANEL_CHANGE_MESSAGE is not set
 # CONFIG_CHARLCD_BL_OFF is not set
 # CONFIG_CHARLCD_BL_ON is not set
 CONFIG_CHARLCD_BL_FLASH=y
+# CONFIG_IMG_ASCII_LCD is not set
+# CONFIG_HT16K33 is not set
+# CONFIG_MAX6959 is not set
+# CONFIG_SEG_LED_GPIO is not set
 CONFIG_DRM=m
 CONFIG_DRM_MIPI_DBI=m
 CONFIG_DRM_MIPI_DSI=y

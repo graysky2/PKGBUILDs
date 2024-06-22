@@ -1,4 +1,4 @@
-From 709d681719d53734661ba543e799bc206ca6c3ac Mon Sep 17 00:00:00 2001
+From cfb0fefdd633bedc4dd3f13dc5b2bb58e50162c0 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 3 Mar 2024 04:09:46 -0500
 Subject: [PATCH 13/13] arch-nspawn: fix setarch for armv7h
@@ -8,10 +8,10 @@ Subject: [PATCH 13/13] arch-nspawn: fix setarch for armv7h
  1 file changed, 3 insertions(+)
 
 diff --git a/src/arch-nspawn.in b/src/arch-nspawn.in
-index 54e5154..b4629a8 100644
+index 63a1e9f..0fb0fa9 100644
 --- a/src/arch-nspawn.in
 +++ b/src/arch-nspawn.in
-@@ -136,6 +136,9 @@ copy_hostconf
+@@ -139,6 +139,9 @@ copy_hostconf
  eval "$(grep -a '^CARCH=' "$working_dir/etc/makepkg.conf")"
  
  [[ -z $nosetarch ]] || unset CARCH
@@ -22,5 +22,5 @@ index 54e5154..b4629a8 100644
  	read -r set_arch < "@pkgdatadir@/setarch-aliases.d/${CARCH}"
  else
 -- 
-2.45.0
+2.45.2
 

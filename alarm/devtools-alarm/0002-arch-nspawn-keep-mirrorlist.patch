@@ -1,4 +1,4 @@
-From 68ded38787638192b6e4c7d556f23067f4fef55a Mon Sep 17 00:00:00 2001
+From 72af0dcea23ee3edd5aa4563f37b31d63b73c46b Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:37:50 -0400
 Subject: [PATCH 02/13] arch-nspawn-keep-mirrorlist
@@ -8,10 +8,10 @@ Subject: [PATCH 02/13] arch-nspawn-keep-mirrorlist
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/arch-nspawn.in b/src/arch-nspawn.in
-index a4504a1..54e5154 100644
+index bd99adc..63a1e9f 100644
 --- a/src/arch-nspawn.in
 +++ b/src/arch-nspawn.in
-@@ -105,7 +105,7 @@ copy_hostconf () {
+@@ -106,7 +106,7 @@ copy_hostconf () {
  	unshare --fork --pid gpg --homedir "$working_dir"/etc/pacman.d/gnupg/ --no-permission-warning --quiet --batch --import --import-options import-local-sigs "$(pacman-conf GpgDir)"/pubring.gpg >/dev/null 2>&1
  	pacman-key --gpgdir "$working_dir"/etc/pacman.d/gnupg/ --import-trustdb "$(pacman-conf GpgDir)" >/dev/null 2>&1
  
@@ -21,5 +21,5 @@ index a4504a1..54e5154 100644
  	[[ -n $host_cachemirrors ]] && printf 'CacheServer = %s\n' "${host_cachemirrors[@]}" >>"$working_dir/etc/pacman.d/mirrorlist"
  
 -- 
-2.45.0
+2.45.2
 

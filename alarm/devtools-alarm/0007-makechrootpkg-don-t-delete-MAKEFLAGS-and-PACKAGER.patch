@@ -1,4 +1,4 @@
-From 111c6eb929d2e3b370016eb6e6f3a6f81d6c926e Mon Sep 17 00:00:00 2001
+From 77ea66d008c8950d85b508f5cf02d9453984912a Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:38:46 -0400
 Subject: [PATCH 07/13] makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER
@@ -8,10 +8,10 @@ Subject: [PATCH 07/13] makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 27bb9f5..8253042 100644
+index f2c72d3..bb21518 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -176,8 +176,7 @@ prepare_chroot() {
+@@ -177,8 +177,7 @@ prepare_chroot() {
  
  	$install -d "$copydir"/{build,startdir,{pkg,srcpkg,src,log}dest}
  
@@ -22,5 +22,5 @@ index 27bb9f5..8253042 100644
  	do
  		grep -q "^$x" "$copydir/etc/makepkg.conf" && continue
 -- 
-2.45.0
+2.45.2
 

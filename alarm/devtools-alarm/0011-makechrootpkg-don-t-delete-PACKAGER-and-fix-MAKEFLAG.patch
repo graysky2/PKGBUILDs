@@ -1,4 +1,4 @@
-From ee93dde8cfc53e41a5bb04f88a5bb64563247569 Mon Sep 17 00:00:00 2001
+From 28149a3566401e29638649af8a6ebd2e787e41a5 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:40:01 -0400
 Subject: [PATCH 11/13] makechrootpkg: don't delete PACKAGER and fix MAKEFLAGS
@@ -11,10 +11,10 @@ See: https://bugs.archlinux.org/task/64938
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index b906c82..aadb17a 100644
+index 2b9ff41..63df869 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -176,9 +176,8 @@ prepare_chroot() {
+@@ -177,9 +177,8 @@ prepare_chroot() {
  
  	$install -d "$copydir"/{build,startdir,{pkg,srcpkg,src,log}dest}
  
@@ -26,5 +26,5 @@ index b906c82..aadb17a 100644
  		grep -q "^$x" "$copydir/etc/makepkg.conf" && continue
  		echo "$x" >>"$copydir/etc/makepkg.conf"
 -- 
-2.45.0
+2.45.2
 

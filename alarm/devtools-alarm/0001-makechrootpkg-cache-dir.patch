@@ -1,33 +1,25 @@
-From cf7fe58b35e7ef4d261565e99baad4fbaaeccd2c Mon Sep 17 00:00:00 2001
+From fc64fd21bcc5e2af9269bbb8639e57f91a360134 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 28 Jan 2023 08:38:43 -0500
 Subject: [PATCH 01/13] makechrootpkg cache dir
 
 ---
- src/makechrootpkg.in | 6 ++++++
- 1 file changed, 6 insertions(+)
+ src/makechrootpkg.in | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 5378eb1..5c748e9 100644
+index 9df14e8..218cca9 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -67,6 +67,7 @@ usage() {
- 	echo 'Flags:'
- 	echo '-h         This help'
- 	echo '-c         Clean the chroot before building'
-+  echo '-X <dir>   Set pacman cache to pass to arch-nspawn'
- 	echo '-d <dir>   Bind directory into build chroot as read-write'
- 	echo '-D <dir>   Bind directory into build chroot as read-only'
- 	echo '-u         Update the working copy of the chroot before building'
-@@ -292,6 +293,7 @@ while getopts 'hcur:I:l:nCTD:d:U:x:' arg; do
- 		D) bindmounts_ro+=("--bind-ro=$OPTARG") ;;
+@@ -300,6 +300,7 @@ while getopts 'hcur:I:l:nCTD:d:U:x:t:' arg; do
  		d) bindmounts_rw+=("--bind=$OPTARG") ;;
+ 		t) bindmounts_tmpfs+=("--tmpfs=$OPTARG") ;;
  		u) update_first=1 ;;
 +    X) cache_dir="$OPTARG" ;;
  		r) passeddir="$OPTARG" ;;
  		I) install_pkgs+=("$OPTARG") ;;
  		l) copy="$OPTARG" ;;
-@@ -315,6 +317,10 @@ chrootdir=$(readlink -e "$passeddir")
+@@ -323,6 +324,10 @@ chrootdir=$(readlink -e "$passeddir")
  [[ ! -d $chrootdir ]] && die "No chroot dir defined, or invalid path '%s'" "$passeddir"
  [[ ! -d $chrootdir/root ]] && die "Missing chroot dir root directory. Try using: mkarchroot %s/root base-devel" "$chrootdir"
  
@@ -39,5 +31,5 @@ index 5378eb1..5c748e9 100644
  	copydir=$copy
  else
 -- 
-2.45.0
+2.45.2
 

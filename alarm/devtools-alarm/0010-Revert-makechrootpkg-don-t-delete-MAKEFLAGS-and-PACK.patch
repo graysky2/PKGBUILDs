@@ -1,4 +1,4 @@
-From 8d1b5d7f75f36e79c854a9cd9dccfa7beb226eae Mon Sep 17 00:00:00 2001
+From a00c392a008479d9f9c482133799909532401ec7 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:39:17 -0400
 Subject: [PATCH 10/13] Revert
@@ -10,10 +10,10 @@ This reverts commit df0a85fd4cb0e116d4bf5e133fc2ffde478d6ad5.
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index b54d464..b906c82 100644
+index eaa66b8..2b9ff41 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -176,8 +176,9 @@ prepare_chroot() {
+@@ -177,8 +177,9 @@ prepare_chroot() {
  
  	$install -d "$copydir"/{build,startdir,{pkg,srcpkg,src,log}dest}
  
@@ -26,5 +26,5 @@ index b54d464..b906c82 100644
  		grep -q "^$x" "$copydir/etc/makepkg.conf" && continue
  		echo "$x" >>"$copydir/etc/makepkg.conf"
 -- 
-2.45.0
+2.45.2
 

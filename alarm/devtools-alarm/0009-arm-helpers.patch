@@ -1,4 +1,4 @@
-From 268b42e8db32a92c6bc73501cb176eca72beea25 Mon Sep 17 00:00:00 2001
+From d4b8899d5526110a4125a67637376ff4fae6e0d1 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sun, 29 Jan 2023 07:44:54 -0500
 Subject: [PATCH 09/13] arm helpers
@@ -12,7 +12,7 @@ Subject: [PATCH 09/13] arm helpers
 
 diff --git a/config/makepkg/aarch64.conf b/config/makepkg/aarch64.conf
 new file mode 100644
-index 0000000..63ba695
+index 000000000000..63ba6950d947
 --- /dev/null
 +++ b/config/makepkg/aarch64.conf
 @@ -0,0 +1,162 @@
@@ -180,7 +180,7 @@ index 0000000..63ba695
 +# vim: set ft=sh ts=2 sw=2 et:
 diff --git a/config/makepkg/armv7h.conf b/config/makepkg/armv7h.conf
 new file mode 100644
-index 0000000..ef28ddb
+index 000000000000..ef28ddbc6344
 --- /dev/null
 +++ b/config/makepkg/armv7h.conf
 @@ -0,0 +1,162 @@
@@ -347,5 +347,5 @@ index 0000000..ef28ddb
 +#PACMAN_AUTH=()
 +# vim: set ft=sh ts=2 sw=2 et:
 -- 
-2.45.2
+2.48.1
 

@@ -1,4 +1,4 @@
-From 5c84e27f474b593e368ec10eb5cd0140c985be90 Mon Sep 17 00:00:00 2001
+From f3897e07b16edac7b19289928cfb170ebfebd407 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:37:59 -0400
 Subject: [PATCH 03/13] makechrootpkg-distcc
@@ -8,7 +8,7 @@ Subject: [PATCH 03/13] makechrootpkg-distcc
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 218cca9..9638e50 100644
+index 7026e583a781..6cf2f6ef300d 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
 @@ -226,10 +226,13 @@ _chrootbuild() {
@@ -27,5 +27,5 @@ index 218cca9..9638e50 100644
  	case $ret in
  		0|14)
 -- 
-2.45.2
+2.48.1
 

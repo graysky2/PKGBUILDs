@@ -5,11 +5,11 @@
 # Contributer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-rpi
-_commit=957fc9f9724b3b973a7842d5abbd382b7e3f5e2d
+_commit=201575782c30fd948415a191a814e28fe0db90dc
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _regen=
-pkgver=6.12.61
+pkgver=6.12.66
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/raspberrypi/linux"
@@ -31,15 +31,15 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         linux.preset
         archarm.diffconfig
 )
-md5sums=('1d075df7664b60c3a671d40bf7275d79'
-         '3bab7426d8c8818dda8353da3892a41f'
-         '8ab870072bbf6352534ef47833465e39'
-         '44f69a0637b34eb772980614f9246d01'
-         'a157c5bfc0f03d0728c92bd953b06265'
-         '8b93b6ca167f70c60277f352f7b78024'
-         '4d7ab0ab2625470ebb916176b5d9cf02')
-md5sums_armv7h=('d0d883906239e12897191f31dc3e6917')
-md5sums_aarch64=('0c9284fd41f557b9ab29ff0d2e2dce4c')
+sha256sums=('b89d4a38312f201514711a2e2c6d0bc8a07e6f59b4b96cd5e7b7693854bc7404'
+            '7a84795f7c7a39e8384356ef51f47d5ddac0e44921d1bd2cbf8db7de88810ef5'
+            '330ee65be2eac75421b2201390a88501adaf374944177d278ea9ef29f7eb98e5'
+            'ff6d10ac64512b0da204a9ce43892ef28bc63c0597888df606af3db279d547de'
+            '5f688e908275e24c63b4c39289c8c00f14b2ff7af36006c7b68fb8331a18546e'
+            '184ee4f680eb32c99f159773b711cff200426cec7a565bd04711558ca74c381e'
+            '3f3df16f49bd5cffd92afa2963cdd9672036b81bffec11237c3a662554915bb3')
+sha256sums_armv7h=('7e6af8ea66dccd2b6faa16b14ce8726f74335902a39f64cd5194199431bcfecf')
+sha256sums_aarch64=('95af7be37e2e538ff5145d6b5f56e8bad1f012dc74faca56b8a53c774bd14618')
 
 # setup vars
 if [[ $CARCH == "armv7h" ]]; then
@@ -60,7 +60,7 @@ prepare() {
 
   if [[ $_regen -eq 1 ]]; then
     # useful on two point releases to keep shit straight
-    echo "Applying custom shit to bcm2711_defconfig"
+    echo "Applying custom options to rpi defconfig"
     make bcm2711_defconfig
     cat ../archarm.diffconfig >> .config
     make olddefconfig
@@ -77,7 +77,7 @@ prepare() {
     # bcm2711_defconfig inserts either -v7l or -v8 for CONFIG_LOCALVERSION= so set this to null
     sed '/^CONFIG_LOCALVERSION=/s,.*$,CONFIG_LOCALVERSION="",' .config >$startdir/newconfig.$_config
     echo "verify that newconfig.$_config is fit for purpose then redefine $_config"
-    exit
+    exit 0
   else
     echo "Setting config..."
     cp ../"$_config" .config

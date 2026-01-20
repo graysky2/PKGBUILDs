@@ -2,7 +2,7 @@ disable_cma() {
   if [[ -f /boot/config.txt && $(grep '^cma' /boot/config.txt) != '' ]]; then
     cat <<END
 
->>> You appear to have dynamic memory (CMA) enabled, which is currently broken
+ >>> You appear to have dynamic memory (CMA) enabled, which is currently broken
     in newer kernels and will cause many issues if left enabled. Disabling that
     for you now.
 
@@ -20,22 +20,11 @@ correct_fstab() {
   fi
 }
 
-advertise_rpi5() {
-  if [[ -f /sys/firmware/devicetree/base/model ]]; then
-    if grep -a -q 5 /sys/firmware/devicetree/base/model; then
-      cat <<END
->>> 16 KB pages on RPi5 are provided by the linux-rpi-16k package
-END
-    fi
-  fi
-}
-
 post_install () {
   post_upgrade
 }
 
 post_upgrade() {
-  advertise_rpi5
   correct_fstab
   disable_cma
 
@@ -43,7 +32,7 @@ post_upgrade() {
     if ! grep "[[:space:]]/boot" etc/mtab 2>&1 >/dev/null; then
       cat <<END
 
->>> WARNING: /boot appears to be a separate partition but is not mounted.
+ >>> WARNING: /boot appears to be a separate partition but is not mounted.
     You probably just broke your system. Congratulations.
 
 END

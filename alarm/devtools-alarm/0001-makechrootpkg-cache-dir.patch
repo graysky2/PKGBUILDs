@@ -1,17 +1,17 @@
-From 27ca9363e903d106a9c28574c009d45a014aa50a Mon Sep 17 00:00:00 2001
+From 925237b68363926ac60e228502357603b69cf388 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 28 Jan 2023 08:38:43 -0500
-Subject: [PATCH 01/13] makechrootpkg cache dir
+Subject: [PATCH 01/10] makechrootpkg cache dir
 
 ---
  src/makechrootpkg.in | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index e7cbc9c3b2bd..7026e583a781 100644
+index 8570a789d75a..e5555a447018 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -300,6 +300,7 @@ while getopts 'hcur:I:l:nCTD:d:U:x:t:' arg; do
+@@ -301,6 +301,7 @@ while getopts 'hcur:I:l:nCTD:d:U:x:t:' arg; do
  		d) bindmounts_rw+=("--bind=$OPTARG") ;;
  		t) bindmounts_tmpfs+=("--tmpfs=$OPTARG") ;;
  		u) update_first=1 ;;
@@ -19,7 +19,7 @@ index e7cbc9c3b2bd..7026e583a781 100644
  		r) passeddir="$OPTARG" ;;
  		I) install_pkgs+=("$OPTARG") ;;
  		l) copy="$OPTARG" ;;
-@@ -323,6 +324,10 @@ chrootdir=$(readlink -e "$passeddir")
+@@ -324,6 +325,10 @@ chrootdir=$(readlink -e "$passeddir")
  [[ ! -d $chrootdir ]] && die "No chroot dir defined, or invalid path '%s'" "$passeddir"
  [[ ! -d $chrootdir/root ]] && die "Missing chroot dir root directory. Try using: mkarchroot %s/root base-devel" "$chrootdir"
  
@@ -31,5 +31,5 @@ index e7cbc9c3b2bd..7026e583a781 100644
  	copydir=$copy
  else
 -- 
-2.48.1
+2.52.0
 

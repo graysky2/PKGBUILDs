@@ -1,17 +1,17 @@
-From c3814e67e5b1e4ca91297748a16a2cc64ac04a81 Mon Sep 17 00:00:00 2001
+From c25ce22677b47c90a58dd0baa93d13bc46be2331 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky@proton.me>
 Date: Sat, 20 Aug 2022 16:39:05 -0400
-Subject: [PATCH 08/13] makechrootpkg-gotmpdir
+Subject: [PATCH 07/10] makechrootpkg-gotmpdir
 
 ---
  src/makechrootpkg.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/makechrootpkg.in b/src/makechrootpkg.in
-index 05a50ed4759e..da364fba1f9d 100644
+index a60f943a3fa9..7dc4d429ceb8 100644
 --- a/src/makechrootpkg.in
 +++ b/src/makechrootpkg.in
-@@ -231,7 +231,7 @@ _chrootbuild() {
+@@ -233,7 +233,7 @@ _chrootbuild() {
  	sudo --preserve-env=SOURCE_DATE_EPOCH \
  		--preserve-env=BUILDTOOL \
  		--preserve-env=BUILDTOOLVER \
@@ -21,5 +21,5 @@ index 05a50ed4759e..da364fba1f9d 100644
  	case $ret in
  		0|14)
 -- 
-2.48.1
+2.52.0
 

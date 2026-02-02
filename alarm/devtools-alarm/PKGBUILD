@@ -6,11 +6,11 @@
 
 pkgname=devtools-alarm
 _pkgname=devtools
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Tools for Arch Linux ARM package maintainers graysky mods'
 arch=('any')
-license=('GPL')
+license=('GPL-3.0-or-later')
 url='https://gitlab.archlinux.org/archlinux/devtools'
 conflicts=('devtools')
 provides=('devtools')
@@ -25,13 +25,17 @@ depends=(
   expac
   fakeroot
   findutils
+  glow
   grep
+  gum
   jq
   openssh
   parallel
+  reuse
   rsync
   sed
   util-linux
+  sudo
   breezy
   git
   mercurial
@@ -40,52 +44,44 @@ depends=(
 makedepends=(
   asciidoctor
 )
+checkdepends=(
+  bats
+)
 optdepends=(
   'btrfs-progs: btrfs support'
   'bat: pretty printing for pkgctl search'
   'nvchecker: pkgctl version subcommand'
 )
-source=(https://gitlab.archlinux.org/archlinux/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz
-#  https://gitlab.archlinux.org/archlinux/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz.sig
+source=(https://gitlab.archlinux.org/archlinux/devtools/-/releases/v${pkgver}/downloads/devtools-${pkgver}.tar.gz{,.sig}
   0001-makechrootpkg-cache-dir.patch
   0002-arch-nspawn-keep-mirrorlist.patch
   0003-makechrootpkg-distcc.patch
   0004-arch-nspawn-arm-fix.patch
   0005-makechrootpkg-no-default-logging.patch
   0006-archbuild-no-setarch.patch
-  0007-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACKAGER.patch
-  0008-makechrootpkg-gotmpdir.patch
-  0009-arm-helpers.patch
-  0010-Revert-makechrootpkg-don-t-delete-MAKEFLAGS-and-PACK.patch
-  0011-makechrootpkg-don-t-delete-PACKAGER-and-fix-MAKEFLAG.patch
-  0012-Revert-makechrootpkg-no-default-logging.patch
-  0013-arch-nspawn-fix-setarch-for-armv7h.patch
+  0007-makechrootpkg-gotmpdir.patch
+  0008-arm-helpers.patch
+  0009-Revert-makechrootpkg-no-default-logging.patch
+  0010-arch-nspawn-fix-setarch-for-armv7h.patch
 )
 validpgpkeys=(
-  '4AA4767BBC9C4B1D18AE28B77F2D434B9741E8AC' # Pierre Schmitz <pierre@archlinux.org>
-  '86CFFCA918CF3AF47147588051E8B148A9999C34' # Evangelos Foutras <foutrelis@archlinux.org>
-  '8FC15A064950A99DD1BD14DD39E4B877E62EB915' # Sven-Hendrik Haase <svenstaro@archlinux.org>
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30' # Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-  'B81B051F2D7FC867AAFF35A58DBD63B82072D77A' # Sébastien Luttringer <seblu@archlinux.org>
-  '6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD' # Allan McRae (Developer) <allan@archlinux.org>
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak <anthraxx@archlinux.org>
+  'F00B96D15228013FFC9C9D0393B11DAA4C197E3D' # Christian Heusel (gromit packager key) <gromit@archlinux.org>
 )
-sha256sums=('6dfacb4dcbab22579ed423bd017766ba761776c317a4fb6f685470d7412f19a1'
-            'bb674fb6d72b47083ca654967f900c71ce64303f3eec7b30afdc4196d08e1ebf'
-            '033d7c527d87fc69779e29645a2bb74ee799bc8e1c29d96fa9e401b9d7221753'
-            'ce9798db7d2fd08594d628e6d81bb4b5921d3ad55c9ce2929df9679042a366a2'
-            '98a7f1bda263b049e5b18c899213e1101d756febcfaf0c607742945f7eb633f4'
-            'a3901b9d6776c8c2df6e7f39a81a9de85a22349105369c2ded858ef6214c3557'
-            'b461cea729ae384024621dcfb27e232005fdeee5f50bf8f92b30910016b3b448'
-            'ba27e43bbac21e3e547e470a83f10541d5361a3eb14da391d64f3d9bcc337521'
-            '57e4a11ac826b655928df894abfeb7ebe6c119667ad12f1150664840293c03dd'
-            'db186f09a0ccbd1595a03a6d57e5e0f4ad60ead025dbb94d9d5a4696830f7051'
-            'c9f557d79be97d0ff4e55cec3f0d8aca8ebd60422e8b15fb854a66780f76d8b5'
-            '5a73b76804fc334ceb1e2b4eba6c35125a5548ee06c08eb4a07d1d860b78b904'
-            '47ff143591c9fae8a494e32c82a34ddf394485022c8a12a943d1963f47ce1ae6'
-            '828fba7b02c1f5e48a586fbe2680d54bf805e51e321b9a0188a47b3911ee74d3')
+sha256sums=('e196cc3cb055f07da9542cd2a9db543178a57eeb3a1df0be4c81952c122b5f37'
+            'SKIP'
+            'eaea18d4f3c627f45b21a2971437a2c2885d5abfa419e0fc638c88c06c7da1a0'
+            '65eeab9c6eb15a37d234c9faebb4389810edb0195f051ae17d00133a2e188fbd'
+            'dd4e2d9faa8497a881b352bc0e7bd81d6997c24a011e726fb59d5d0a92d515a9'
+            '1e7c8880a40fa7c73911fee09e1a8675fe0ba163195f822b4b43ce2cbfdd498c'
+            '179940b6bd291e403fffb3eb917309fa1f95b09fc0f4e28056342a2effd1ec74'
+            '3ec71c206402c481ac8d125dc98ed04eeb05fc83efa564fa61693fa477a91e70'
+            '423d98ccad4e98cba41ea11442948a57187c47a232ddc1c9b5c03969cf36f96f'
+            'f2db94b1baf21821895da938f3f5fc900cdadfc631f2faa51b52da22e4edeafc'
+            'c27b8e8f8f54782e031afee8a2646036721d5f267274df014c4af79fa3a9e10c'
+            'c7236ee939b055c5f17084465f888c13393f362ac76347aef05ea1943a77b597')
 prepare() {
-  cd "${_pkgname}-v${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
@@ -96,12 +92,17 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   make BUILDTOOLVER="${pkgver}-${pkgrel}-${arch}" PREFIX=/usr
 }
 
+check() {
+  cd ${_pkgname}-${pkgver}
+  make PREFIX=/usr test
+}
+
 package() {
-  cd ${_pkgname}-v${pkgver}
+  cd ${_pkgname}-${pkgver}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 

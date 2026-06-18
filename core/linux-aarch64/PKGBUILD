@@ -9,7 +9,7 @@ _srcname=linux-7.0
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=7.0.13
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL-2.0-only')
@@ -74,6 +74,11 @@ _package() {
   pkgdesc="The Linux Kernel and modules - ${_desc}"
   depends=('coreutils' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('linux-firmware: firmware images needed for some devices'
+              'firmware-raspberrypi: WiFi and Bluetooth firmware for Raspberry Pi'
+              'raspberrypi-bootloader: GPU firmware required to boot any Raspberry Pi'
+              'raspberry-pi5-c0-armstub: Required to boot RPi5 C0 with mainline kernel'
+              'raspberry-pi5-d-armstub: Required to boot RPi5 D0 with mainline kernel'
+              'raspberrypi-overlays: Required to boot RPi5 with mainline kernel'
               'wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "KSMBD-MODULE" "WIREGUARD-MODULE")
   conflicts=('linux')

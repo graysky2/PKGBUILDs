@@ -1,5 +1,7 @@
-# Maintainer: Nick Hainke <vincent@systemli.org>
+# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Contributor: Nick Hainke <vincent@systemli.org>
 
+buildarch=8
 pkgname=raspberrypi-overlays
 pkgver=20260611
 _commit=084c7f66350fd98c37deef6372197a9d9fbb3625
@@ -9,6 +11,7 @@ arch=(any)
 url="https://github.com/raspberrypi/firmware"
 license=(custom)
 makedepends=(dtc)
+conflicts=(linux-rpi linux-rpi-16k)
 options=(!strip)
 source=("firmware-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/firmware/archive/${_commit}.tar.gz"
         'bcm2712d0-overlay.dts')
